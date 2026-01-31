@@ -32,6 +32,6 @@ public abstract class Drone {
         this.status = status;
     }
 
-    public abstract double speedKmPerHour();
+    public abstract double speedKmPerMin();
     
 }

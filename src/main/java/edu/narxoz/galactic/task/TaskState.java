@@ -1,5 +1,8 @@
-package src.main.java.edu.narxoz.galactic.task;
+package edu.narxoz.galactic.task;
 
-public class TaskState {
-    
+public enum TaskState {
+    CREATED,
+    ASSIGNED,
+    DONE,
+    FAILED
 }

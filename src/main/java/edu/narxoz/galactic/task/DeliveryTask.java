@@ -1,5 +1,59 @@
-package src.main.java.edu.narxoz.galactic.task;
+package edu.narxoz.galactic.task;
+
+import edu.narxoz.galactic.bodies.CelestialBody;
+import edu.narxoz.galactic.cargo.Cargo;
+import edu.narxoz.galactic.drones.Drone;
 
 public class DeliveryTask {
-    
+    private CelestialBody origin;
+    private CelestialBody destination;
+    private Cargo cargo;
+    private TaskState state;
+    private Drone assignedDrone;
+
+    public DeliveryTask(CelestialBody origin, CelestialBody destination, Cargo cargo) {
+
+        this.origin = origin;
+        this.destination = destination;
+        this.cargo = cargo;
+        this.state = TaskState.CREATED;
+    }
+
+    public double estimateTime() {
+        if (assignedDrone == null) {
+            throw new IllegalArgumentException("must be assigned");
+        }
+        if (assignedDrone.speedKmPerMin() <= 0) {
+            throw new IllegalArgumentException("invalid speed");
+        }
+        return origin.distanceTo(destination) / assignedDrone.speedKmPerMin();
+    }
+
+    public CelestialBody getOrigin() {
+        return origin;
+    }
+
+    public CelestialBody getDestination() {
+        return destination;
+    }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public TaskState getState() {
+        return state;
+    }
+
+    void setState(TaskState state) {
+        this.state = state;
+    }
+
+    public Drone getAssignedDrone() {
+        return assignedDrone;
+    }
+
+    void setAssignedDrone(Drone drone) {
+        this.assignedDrone = drone;
+    }
 }
