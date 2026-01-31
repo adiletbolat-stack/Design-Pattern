@@ -17,6 +17,7 @@ public class DeliveryTask {
         this.destination = destination;
         this.cargo = cargo;
         this.state = TaskState.CREATED;
+        this.assignedDrone = null;
     }
 
     public double estimateTime() {
@@ -45,7 +46,7 @@ public class DeliveryTask {
         return state;
     }
 
-    void setState(TaskState state) {
+    public void setState(TaskState state) {
         this.state = state;
     }
 
@@ -53,7 +54,7 @@ public class DeliveryTask {
         return assignedDrone;
     }
 
-    void setAssignedDrone(Drone drone) {
+    public void setAssignedDrone(Drone drone) {
         this.assignedDrone = drone;
     }
 }
