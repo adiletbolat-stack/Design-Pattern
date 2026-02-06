@@ -3,7 +3,7 @@ package edu.narxoz.galactic.factory;
 import edu.narxoz.galactic.drones.Drone;
 import edu.narxoz.galactic.drones.LightDrone;
 
-public class LightDroneFac extends DroneFac{
+public class LightDroneFac implements DroneFac{
 
 
     @Override
