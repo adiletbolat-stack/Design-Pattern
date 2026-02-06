@@ -4,8 +4,10 @@ import edu.narxoz.galactic.bodies.Planet;
 import edu.narxoz.galactic.cargo.Cargo;
 import edu.narxoz.galactic.dispatcher.Dispatcher;
 import edu.narxoz.galactic.dispatcher.Result;
-import edu.narxoz.galactic.drones.HeavyDrone;
-import edu.narxoz.galactic.drones.LightDrone;
+import edu.narxoz.galactic.drones.Drone;
+import edu.narxoz.galactic.factory.DroneFac;
+import edu.narxoz.galactic.factory.HeavyDroneFac;
+import edu.narxoz.galactic.factory.LightDroneFac;
 import edu.narxoz.galactic.task.DeliveryTask;
 
 public class DemoApp {
@@ -17,8 +19,11 @@ public class DemoApp {
 
         Cargo heavyCargo = new Cargo(50, "Heavy");
 
-        LightDrone lightDrone = new LightDrone("1", 20);
-        HeavyDrone heavyDrone = new HeavyDrone("1", 100);
+        DroneFac lightCreator = new LightDroneFac();
+        DroneFac heavyCreator = new HeavyDroneFac();
+
+        Drone lightDrone = lightCreator.createDrone();
+        Drone heavyDrone = heavyCreator.createDrone();
 
         DeliveryTask task = new DeliveryTask(earth, mars, heavyCargo);
         Dispatcher dispatcher = new Dispatcher();
